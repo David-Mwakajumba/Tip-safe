@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="TipSafe" class="bg-blue-600 text-white" />
+    
+    <GridLayout rows="auto, *">
+        <!-- Add Tip Form -->
+        <StackLayout row="0" class="p-4 bg-white border-b border-gray-200">
+            <TextField hint="Amount" keyboardType="number" text="{{ tipAmount }}" class="input mb-2 p-3 border rounded" />
+            <TextField hint="Table Number" text="{{ tableNumber }}" class="input mb-2 p-3 border rounded" />
+            <GridLayout columns="*, *" class="mb-4">
+                <Button col="0" text="Cash Tip" tap="{{ addCashTip }}" class="btn mr-1 bg-green-500 text-white" />
+                <Button col="1" text="Card Tip" tap="{{ addCardTip }}" class="btn ml-1 bg-blue-500 text-white" />
+            </GridLayout>
+        </StackLayout>
+
+        <!-- Tips List -->
+        <ListView row="1" items="{{ tips }}" class="list-group">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" class="p-4 bg-white border-b border-gray-200">
+                    <StackLayout col="0">
+                        <Label text="{{ 'Table ' + tableNumber }}" class="font-bold" />
+                        <Label text="{{ date, 'MM/dd/yyyy HH:mm' }}" class="text-gray-500" />
+                    </StackLayout>
+                    <Label col="1" text="{{ '$' + amount }}" class="text-lg" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>
